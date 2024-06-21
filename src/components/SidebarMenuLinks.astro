@@ -1,0 +1,23 @@
+---
+import fetchApi from '../lib/strapi';
+import type Criterion from '../interfaces/criterion';
+
+const criteria = await fetchApi<Criterion[]>({
+  endpoint: 'wcag-criteria',
+  wrappedByKey: 'data'
+});
+
+const filterdedCriteria = criteria.filter((criterion: Criterion) => criterion.attributes.wcagGuideline.data.attributes.guidelineNumber === Astro.props.guidelineNumber);
+---
+
+{filterdedCriteria.map((criterion) => {
+  return (
+    <li>
+      <a class="text-base"
+        href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}`}
+      >
+        { criterion.attributes.criterionNumber }{' '}{ criterion.attributes.name }
+      </a>
+    </li>
+  );
+})}

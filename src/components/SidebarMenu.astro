@@ -1,0 +1,38 @@
+---
+import fetchApi from '../lib/strapi';
+import type Guideline from '../interfaces/guideline';
+import SidebarMenuLinks from './SidebarMenuLinks.astro';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const guidelines = await fetchApi<Guideline[]>({
+  endpoint: 'wcag-guidelines',
+  wrappedByKey: 'data'
+});
+
+const filterdedGuidelines = guidelines.filter((guideline: Guideline) => guideline.attributes.wcagPrinciple.data.attributes.principleNumber === Astro.props.principleNumber);
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section class="text-lt-gray dark:text-dk-gray">
+  <span id="side-menu-label" class="relative bg-white dark:bg-dk-blue-darkest text-lt-gray dark:text-dk-gray text-2xl mx-8 px-2 pb-2 block mb-[-3.5rem] mt-8">{ Astro.props.principleNumber } {Astro.props.principleName}</span>
+  <nav aria-label={ t('sidebar-menu-title') } class="sidebar-menu text-lt-gray dark:text-dk-gray pb-1 pt-6 px-2 mt-8 bg-white dark:bg-dk-blue-darkest my-12 border-solid border-l-8 border-t-2 border-b-2 border-r-2 rounded-3xl border-lt-code-border dark:border-dk-code-border">
+    <ul class="ml-2">
+      {filterdedGuidelines.map((guideline) => {
+        return (
+          <li>
+            <a 
+              href={`/${lang}/${guideline.attributes.wcagPrinciple.data.attributes.slug}/${guideline.attributes.slug}`}
+            >
+              { guideline.attributes.guidelineNumber } { guideline.attributes.name }
+            </a>
+            <ul class="ml-2">
+              <SidebarMenuLinks guidelineNumber={ guideline.attributes.guidelineNumber } />
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
+  </nav>
+</section>

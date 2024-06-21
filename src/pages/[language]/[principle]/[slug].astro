@@ -1,0 +1,53 @@
+---
+import fetchApi from '../../../lib/strapi';
+import Layout from '../../../layouts/Layout.astro';
+import Criteria from '../../../components/Criteria.astro';
+import SidebarMenu from '../../../components/SidebarMenu.astro';
+import Breadcrumb from '../../../components/Breadcrumb.astro';
+
+import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
+import type Guideline from '../../../interfaces/guideline';
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export async function getStaticPaths() {
+  const pages = await fetchApi<Guideline[]>({
+    endpoint: 'wcag-guidelines',
+    wrappedByKey: 'data',
+  });
+
+  return pages.map((page: Guideline) => ({
+    params: {
+      slug: page.attributes.slug,
+      language: page.attributes.locale,
+      principle: page.attributes.wcagPrinciple.data.attributes.slug,
+    },
+    props: page,
+  }));
+}
+
+type Props = Guideline;
+
+const page = Astro.props;
+---
+
+<Layout>
+  <SidebarMenu principleNumber={ page.attributes.wcagPrinciple.data.attributes.principleNumber } principleName={ page.attributes.wcagPrinciple.data.attributes.name } />
+  <div class="max-w-[1564px] mx-auto md:px-8-px">
+    <div class="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
+      <Breadcrumb type="guideline"
+        language={ page.attributes.locale }
+        principleNumber={ page.attributes.wcagPrinciple.data.attributes.principleNumber }
+        principleName={ page.attributes.wcagPrinciple.data.attributes.name }
+        principleSlug={ page.attributes.wcagPrinciple.data.attributes.slug }
+        currentNumber={ page.attributes.guidelineNumber }
+        currentPage={ page.attributes.name }
+      />
+      <h1 id="skip-target">{ page.attributes.guidelineNumber } { page.attributes.name }</h1>
+      <div class="text-xl bodytext"><Fragment set:html={ page.attributes.guidelineDescription } /></div>
+      <Criteria principleNumber={ page.attributes.wcagPrinciple.data.attributes.principleNumber } guidelineNumber={ page.attributes.guidelineNumber } />
+    </div>
+  </div>
+</Layout>
+
+

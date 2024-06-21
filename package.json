@@ -1,0 +1,24 @@
+{
+  "name": "wcag-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/sitemap": "^3.1.6",
+    "@astrojs/tailwind": "^5.0.1",
+    "@fontsource/average-sans": "^5.0.8",
+    "@fontsource/inter": "^5.0.17",
+    "@fontsource/lato": "^5.0.14",
+    "@fontsource/rock-salt": "^5.0.14",
+    "astro": "^4.10.3",
+    "astro-icon": "^1.0.2",
+    "typescript": "^5.4.5"
+  }
+}

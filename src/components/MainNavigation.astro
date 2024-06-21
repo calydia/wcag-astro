@@ -1,0 +1,51 @@
+---
+import fetchApi from '../lib/strapi';
+import type Principle from '../interfaces/principle';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { Icon } from 'astro-icon/components';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+
+
+const principles = await fetchApi<Principle[]>({
+  endpoint: 'wcag-principles',
+  wrappedByKey: 'data'
+});
+---
+
+<nav id="main-menu-nav" aria-labelledby="main-menu-label" class="text-black dark:text-white py-1 mt-2 nav-bar">
+  <span id="main-menu-label" class="sr-only">{ t('name-main-menu') }</span>
+  <button id="main-menu-toggle" class="menu-toggle flex items-center gap-2 mt-2 mx-auto text-black border-y-4 border-transparent dark:text-white lg:hidden lg:invisible
+  hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
+  focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white"
+    aria-expanded="false" aria-controls="main-menu" aria-haspopup="true">
+    <Icon name="bars-3-solid" class="menu-open h-8 w-8" aria-hidden="true" />
+    <Icon name="x-mark-solid" class="menu-close h-8 w-8" aria-hidden="true" />
+    <span>{ t('menu-button') }</span>
+  </button>
+  <ul id="main-menu" class="text-left mx-auto lg:visible lg:flex lg:flex-wrap lg:justify-center mt-4 p-0 mb-0
+    max-lg:absolute max-lg:z-20 lg:w-[90%] max-lg:mx-auto max-lg:left-0 max-lg:right-0 max-lg:p-4 max-lg:border-2 max-lg:border-solid max-lg:border-black max-lg:dark:border-white max-lg:bg-lt-code-bg max-lg:dark:bg-dk-code-bg"
+  >
+  {principles.map((principle) => {
+    return (
+      <li>
+        <a class="p-4 text-lg" href={`/${lang}/${principle.attributes.slug}`}>
+          {`${ principle.attributes.principleNumber } ${ principle.attributes.name }`}
+        </a>
+      </li>
+    );
+  })}
+</ul>
+</nav>
+
+<script>
+  const subButtons = document.querySelectorAll('.mobile-menu-toggle');
+  subButtons.forEach((subButton) => {
+    subButton.addEventListener('click', () => {
+      const currentExpanded = subButton.getAttribute('aria-expanded');
+      (currentExpanded == 'true') ? subButton.setAttribute('aria-expanded', 'false') : subButton.setAttribute('aria-expanded', 'true');
+    });
+  });
+</script>

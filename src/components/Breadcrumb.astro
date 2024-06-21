@@ -1,0 +1,43 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const navLanguage = Astro.props.language;
+const currentNumber = Astro.props.currentNumber;
+const currentPage = Astro.props.currentPage;
+
+const pageType = Astro.props.type;
+---
+
+<nav aria-label={ t('breadcrumb-aria') }>
+  <ol class="block list-none m-0 p-0">
+    <li class="inline">
+      <a class="text-base" href={`/${navLanguage}`}>{ t('home-link') }</a>
+    </li>
+
+    {(pageType === 'guideline' || pageType === 'criterion') ?
+      <li class="inline">
+        <span class="mx-2 text-base">/</span>
+        <a class="text-base" href={`/${navLanguage}/${Astro.props.principleSlug}`}>
+          { Astro.props.principleNumber} { Astro.props.principleName }
+        </a>
+      </li>
+    : null}
+
+    {(pageType === 'criterion') ?
+    <li class="inline">
+      <span class="mx-2 text-base">/</span>
+      <a class="text-base" href={`/${navLanguage}/${Astro.props.principleSlug}/${Astro.props.guidelineSlug}`}>
+        { Astro.props.guidelineNumber} { Astro.props.guidelineName }
+      </a>
+    </li>
+    : null}
+
+    <li class="inline text-base">
+      <span class="mx-2 text-base">/</span>
+      {`${currentNumber} ${currentPage}`}
+    </li>
+  </ol>
+</nav>

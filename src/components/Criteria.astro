@@ -1,0 +1,24 @@
+---
+import fetchApi from '../lib/strapi';
+import type Criterion from '../interfaces/criterion';
+
+const criteria = await fetchApi<Criterion[]>({
+  endpoint: 'wcag-criteria',
+  wrappedByKey: 'data'
+});
+
+const filterdedByGuideline = criteria.filter((criterion: Criterion) => criterion.attributes.wcagGuideline.data.attributes.guidelineNumber === Astro.props.guidelineNumber);
+---
+
+<div class="md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+  {filterdedByGuideline.map((criterion) => {
+    return (
+      <a href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}`}
+        class="box-link block border-l-4 border-white pl-6 hover:border-l-8 hover:border-wheat hover:pl-4"
+      >
+        <h3 class="mt-0">{ criterion.attributes.criterionNumber } { criterion.attributes.name }</h3>
+        <div class="box-content"><Fragment set:html={ criterion.attributes.whatToDo } /></div>
+      </a>
+    );
+  })}
+</div>

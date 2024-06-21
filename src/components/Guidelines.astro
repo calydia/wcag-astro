@@ -1,0 +1,26 @@
+---
+import fetchApi from '../lib/strapi';
+import type Guideline from '../interfaces/guideline';
+import Criteria from './Criteria.astro';
+
+const guidelines = await fetchApi<Guideline[]>({
+  endpoint: 'wcag-guidelines',
+  wrappedByKey: 'data'
+});
+
+
+const filterdedGuidelines = guidelines.filter((guideline: Guideline) => guideline.attributes.wcagPrinciple.data.attributes.principleNumber === Astro.props.principleNumber);
+
+---
+
+<section>
+  {filterdedGuidelines.map((guideline) => {
+    return (
+      <div>
+        <h2>{ guideline.attributes.guidelineNumber } { guideline.attributes.name }</h2>
+        <div class="text-xl bodytext"><Fragment set:html={ guideline.attributes.guidelineDescription } /></div>
+        <Criteria principleNumber={ Astro.props.principleNumber } guidelineNumber={ guideline.attributes.guidelineNumber } />
+      </div>
+    );
+  })}
+</section>
