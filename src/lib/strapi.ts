@@ -47,7 +47,10 @@ export default async function fetchApi<T>({
   }
   if (endpoint == 'wcag-criteria') {
     populate = '&populate[0]=wcagPrinciple&populate[1]=wcagGuideline';
-    sort = '&sort=criterionNumber';
+    sort = '&sort=criterionSort';
+  }
+  if (endpoint == 'wcag-principles') {
+    sort = '&sort=principleNumber'
   }
 
   const url = new URL(`${import.meta.env.STRAPI_URL}/api/${endpoint}?populate=localizations&${lang}${sort}${populate}`);

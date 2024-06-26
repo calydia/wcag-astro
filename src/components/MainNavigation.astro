@@ -11,7 +11,8 @@ const t = useTranslations(lang);
 
 const principles = await fetchApi<Principle[]>({
   endpoint: 'wcag-principles',
-  wrappedByKey: 'data'
+  wrappedByKey: 'data',
+  lang: lang
 });
 ---
 

@@ -4,6 +4,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 import { Icon } from 'astro-icon/components';
+
 ---
 
 <footer class="p-4-px lg:px-8-px lg:py-4-px border-t-8 border-solid border-blue-tory bg-lt-blue-light dark:bg-dk-purple">
@@ -15,19 +16,37 @@ import { Icon } from 'astro-icon/components';
   </div>
   <div class="md:flex md:justify-between max-w-[1500px] mx-auto">
     <nav aria-label={ t('footer-menu-aria') }>
-      Menu
+      <ul id="main-menu" class="text-left mt-4 p-0 mb-0">
+        <li>
+          { (lang == "en")  ?
+            <a href="/en/sitemap">Sitemap</a>
+          :
+          <a href="/fi/sivukartta">Sivukartta</a>
+          }
+        </li>
+      </ul>
     </nav>
     <div class="flex items-center">
       <span aria-hidden="true" class="font-title inline-block mr-4 text-lt-blue-dark dark:text-dk-blue-light">
         SK
       </span>
-      <a
-        href="https://blog.sanna.ninja"
-        rel="noopener noreferrer"
-        class="font-light"
-      >
-        { t('ext-blog') }
-      </a>
+      <div class="flex flex-col">
+        <a
+          href="https://a11y.sanna.ninja"
+          rel="noopener noreferrer"
+          class="font-light"
+        >
+          { t('ext-a11y') }
+        </a>
+        <a
+          href="https://blog.sanna.ninja"
+          rel="noopener noreferrer"
+          class="font-light"
+        >
+          { t('ext-blog') }
+        </a>
+      </div>
+
     </div>
   </div>
   <script is:inline src="/skip-content.js"></script>

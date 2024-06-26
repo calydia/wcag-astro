@@ -14,7 +14,7 @@ const filterdedCriteria = criteria.filter((criterion: Criterion) => criterion.at
 {filterdedCriteria.map((criterion) => {
   return (
     <li>
-      <a class="text-base block py-2.5 no-underline hover:underline"
+      <a class="text-base block py-2.5"
         href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}`}
       >
         { criterion.attributes.criterionNumber }{' '}{ criterion.attributes.name }

@@ -20,7 +20,7 @@ export async function getStaticPaths() {
       slug: page.attributes.slug,
       language: page.attributes.locale,
       principle: page.attributes.wcagPrinciple.data.attributes.slug,
-      guideline: page.attributes.wcagGuideline.data.attributes.slug 
+      guideline: page.attributes.wcagGuideline.data.attributes.slug,
     },
     props: page,
   }));
@@ -29,9 +29,14 @@ export async function getStaticPaths() {
 type Props = Criterion;
 
 const page = Astro.props;
+
+// const engUrl = (page.attributes.locale == 'en') ? page.attributes.pageUrl : page.attributes.localizations.data[0].attributes.pageUrl;
+// const fiUrl = (page.attributes.locale == 'fi') ? page.attributes.pageUrl : page.attributes.localizations.data[0].attributes.pageUrl;
 ---
 
-<Layout>
+<Layout type="other" metaDescription={ page.attributes.metaDescription } locale={ page.attributes.locale } title={ page.attributes.name }
+
+  >
   <SidebarMenu principleNumber={ page.attributes.wcagPrinciple.data.attributes.principleNumber } principleName={ page.attributes.wcagPrinciple.data.attributes.name } />
   <div class="max-w-[1564px] mx-auto md:px-8-px">
     <div class="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
@@ -48,19 +53,39 @@ const page = Astro.props;
       />
       <h1 id="skip-target">{ page.attributes.criterionNumber } { page.attributes.name }</h1>
       <div class="text-xl bodytext">
+        <div>{ t('wcag-level') } { page.attributes.criterionLevel }</div>
+        <div>{ t('wcag-version') } { page.attributes.wcagVersion }</div>
+
+        <h2>{ t('criterion-desc') }</h2>
         <blockquote>
           <Fragment set:html={ page.attributes.officialDescription } />
         </blockquote>
-        <h2>What to do?</h2>
-        <Fragment set:html={ page.attributes.whatToDo } />
-        <h2>Why it's important?</h2>
-        <Fragment set:html={ page.attributes.whyItIsImportant } />
-        <h2>How to test for it</h2>
-        <Fragment set:html={ page.attributes.howToTestForIt } />
+
+        {(page.attributes.whatToDo) ? 
+          <h2>{ t('what-to-do') }</h2>
+          <Fragment set:html={ page.attributes.whatToDo } />
+        : null}
+
+        {(page.attributes.whyItIsImportant) ? 
+          <h2>{ t('why-is-it-important') }</h2>
+          <Fragment set:html={ page.attributes.whyItIsImportant } />
+        : null}
+
+        {(page.attributes.commonPitfalls) ? 
+          <h2>{ t('common-pitfalls') }</h2>
+          <Fragment set:html={ page.attributes.commonPitfalls } />
+        : null}
+
+        {(page.attributes.howToTestForIt) ? 
+          <h2>{ t('how-to-test-for-it') }</h2>
+          <Fragment set:html={ page.attributes.howToTestForIt } />
+        : null}
+
+        {(page.attributes.moreAboutThisCriterion) ? 
+          <h2>{ t('more-about-this-elsewhere') }</h2>
+          <Fragment set:html={ page.attributes.moreAboutThisCriterion } />
+        : null}
       </div>
     </div>
   </div>
 </Layout>
-
-
-<!-- Lisää kenttä "read more about this criterion, jonne linkit wcag-materiaaleihin" -->

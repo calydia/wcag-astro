@@ -14,6 +14,8 @@ import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
 ---
 <html lang={ locale }>
   <head>
@@ -57,9 +59,9 @@ const t = useTranslations(lang);
         </a>
         </div>
       </div>
-      <MainNavigation currentUrl={ currentUrl } />
+      <MainNavigation currentUrl={ currentUrl } locale={ locale } />
     </header>
-    <main class={`text-lg lg:text-xl mb-8 md:mb-12 max-w-7xl md:mx-auto use-grid`}>
+    <main class={`text-lg lg:text-xl mb-8 md:mb-12 max-w-7xl md:mx-auto ${gridClass}`}>
       <slot />
     </main>
     <Footer currentPage={ currentUrl } locale={ locale } />
@@ -184,6 +186,10 @@ const t = useTranslations(lang);
 
   h3 {
     @apply mb-4 text-xl lg:text-2xl font-bold mt-12 font-heading relative;
+  }
+
+  .card-heading {
+    @apply mb-4 text-lg font-bold font-heading relative mt-0;
   }
 
   h4 {
@@ -530,13 +536,13 @@ h4::before {
   }
 
   .use-grid {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 20rem 1fr;
 
     @apply md:grid;
   }
 
   .crumb-grid {
-    @apply md:ml-[372px];
+    @apply md:ml-[23.25rem];
   }
 
   .crumb-no-grid {
@@ -548,16 +554,9 @@ h4::before {
     @apply hover:no-underline;
   }
 
+  .box-link h2::before,
   .box-link h3::before {
     @apply hidden invisible;
-  }
-
-  .box-link h3 {
-    @apply text-lg;
-  }
-
-  .box-link:hover h3 {
-    @apply underline;
   }
 
   .box-content p {

@@ -5,6 +5,7 @@ export default interface Principle {
     slug: string,
     principleDescription: string,
     principleNumber: number,
+    metaDescription: string,
     createdAt: string,
     updatedAt: string,
     publishedAt: string,

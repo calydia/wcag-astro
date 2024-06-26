@@ -5,12 +5,11 @@ import Criteria from './Criteria.astro';
 
 const guidelines = await fetchApi<Guideline[]>({
   endpoint: 'wcag-guidelines',
-  wrappedByKey: 'data'
+  wrappedByKey: 'data',
+  lang: Astro.props.lang
 });
 
-
 const filterdedGuidelines = guidelines.filter((guideline: Guideline) => guideline.attributes.wcagPrinciple.data.attributes.principleNumber === Astro.props.principleNumber);
-
 ---
 
 <section>

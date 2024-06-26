@@ -4,15 +4,17 @@ import type Guideline from '../interfaces/guideline';
 import SidebarMenuLinks from './SidebarMenuLinks.astro';
 import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const guidelines = await fetchApi<Guideline[]>({
   endpoint: 'wcag-guidelines',
-  wrappedByKey: 'data'
+  wrappedByKey: 'data',
+  lang: lang
 });
 
 const filterdedGuidelines = guidelines.filter((guideline: Guideline) => guideline.attributes.wcagPrinciple.data.attributes.principleNumber === Astro.props.principleNumber);
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <section class="text-lt-gray dark:text-dk-gray">
@@ -22,13 +24,13 @@ const t = useTranslations(lang);
       {filterdedGuidelines.map((guideline) => {
         return (
           <li>
-            <a 
+            <a class="py-2 block no-underline hover:underline"
               href={`/${lang}/${guideline.attributes.wcagPrinciple.data.attributes.slug}/${guideline.attributes.slug}`}
             >
               { guideline.attributes.guidelineNumber } { guideline.attributes.name }
             </a>
-            <ul class="ml-2">
-              <SidebarMenuLinks guidelineNumber={ guideline.attributes.guidelineNumber } />
+            <ul class="ml-2 mb-2">
+              <SidebarMenuLinks guidelineNumber={ guideline.attributes.guidelineNumber } lang={ lang } />
             </ul>
           </li>
         );

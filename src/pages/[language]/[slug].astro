@@ -25,9 +25,14 @@ export async function getStaticPaths() {
 type Props = Principle;
 
 const page = Astro.props;
+
+const engUrl = (page.attributes.locale == 'en') ? page.attributes.slug : page.attributes.localizations.data[0].attributes.slug;
+const fiUrl = (page.attributes.locale == 'fi') ? page.attributes.slug : page.attributes.localizations.data[0].attributes.slug;
 ---
 
-<Layout>
+<Layout type="other" metaDescription={ page.attributes.metaDescription} locale={ page.attributes.locale } title={ page.attributes.name }
+engUrl={ engUrl } fiUrl={ fiUrl } currentUrl={ page.attributes.slug } currentSlug={ page.attributes.slug } alternateFi={`fi/${ fiUrl }`} alternateEn={`en/${ engUrl }`}
+>
   <SidebarMenu principleNumber={ page.attributes.principleNumber } principleName={ page.attributes.name } />
   <div class="max-w-[1564px] mx-auto md:px-8-px">
     <div class="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
@@ -38,7 +43,7 @@ const page = Astro.props;
       />
       <h1 id="skip-target">{ page.attributes.principleNumber } { page.attributes.name }</h1>
       <div class="text-xl bodytext"><Fragment set:html={ page.attributes.principleDescription } /></div>
-      <Guidelines principleNumber={ page.attributes.principleNumber } />
+      <Guidelines principleNumber={ page.attributes.principleNumber } lang={ lang } />
     </div>
   </div>
 </Layout>

@@ -3,8 +3,10 @@ export default interface Guideline {
   attributes: {
     name: string,
     slug: string,
+    pageUrl: string,
     guidelineDescription: string,
     guidelineNumber: number,
+    metaDescription: string,
     createdAt: string,
     updatedAt: string,
     publishedAt: string,
@@ -12,7 +14,8 @@ export default interface Guideline {
     localizations: {
       data: [{
         attributes: {
-          slug: string
+          slug: string,
+          pageUrl: string
         }
       }]
     },
