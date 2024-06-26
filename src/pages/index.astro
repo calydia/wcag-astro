@@ -10,7 +10,7 @@ const frontPage = await fetchApi<FrontPage>({
 });
 ---
 
-<Layout type="front" locale={ frontPage.attributes.locale } metaDescription={ frontPage.attributes.metaDescription }
+<Layout currentType="front" locale={ frontPage.attributes.locale } metaDescription={ frontPage.attributes.metaDescription }
   fiUrl="front" engUrl="front" alternateFi="fi" alternateEn="en"
 >
   <div class="max-w-[1564px] mx-auto md:px-8-px">
