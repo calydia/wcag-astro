@@ -8,13 +8,17 @@ const criteria = await fetchApi<Criterion[]>({
   lang: Astro.props.lang
 });
 
+const path = Astro.url.pathname.toString();
+
 const filterdedCriteria = criteria.filter((criterion: Criterion) => criterion.attributes.wcagGuideline.data.attributes.guidelineNumber === Astro.props.guidelineNumber);
 ---
 
 {filterdedCriteria.map((criterion) => {
+  const pathString = criterion.attributes.wcagPrinciple.data.attributes.slug + '/' + criterion.attributes.wcagGuideline.data.attributes.slug + '/' + criterion.attributes.slug;
+  const ariaCurrent = (path.includes(pathString)) ? 'page' : undefined;
   return (
     <li>
-      <a class="text-base block py-2.5 no-underline hover:underline"
+      <a class="text-base block py-2.5 no-underline hover:underline" aria-current={ ariaCurrent }
         href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}`}
       >
         { criterion.attributes.criterionNumber }{' '}{ criterion.attributes.name }

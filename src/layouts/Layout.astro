@@ -145,36 +145,8 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
     @apply text-xl md:text-2xl leading-relaxed md:leading-relaxed;
   }
 
-  .toc-box {
-    @apply bg-white dark:bg-dk-blue-darkest my-12 border-solid border-l-8 border-t-2 border-b-2 border-r-2 rounded-3xl border-lt-code-border dark:border-dk-code-border p-8;
-  }
-
-  .light .toc-box {
-    @apply shadow-2xl;
-  }
-
   .light .sidebar-menu {
     @apply shadow-xl;
-  }
-
-  .toc-box li {
-    @apply my-4;
-  }
-
-  .toc-box li li {
-    @apply mx-2;
-  }
-
-  .toc-box a {
-    @apply no-underline hover:underline;
-  }
-
-  .post-link {
-    @apply no-underline;
-  }
-
-  .post-link:hover .post-title {
-    @apply text-lt-purple dark:text-dk-blue-light underline decoration-2 underline-offset-4;
   }
 
   h1 {
@@ -541,34 +513,6 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
         const menuToggle = document.getElementById('main-menu-toggle');
         (menuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
         (menuToggle as HTMLButtonElement).focus();
-      }
-
-      // If esc is pressed on a menu plus/minus button with aria-expanded as false, close the menu and focus the previous button.
-      if (targetClass.contains('mobile-menu-toggle') && currentExpanded == 'false') {
-        const closestMenuButton = (event.target as HTMLAnchorElement).closest('.menu-button-ul');
-        if (closestMenuButton) {
-          (closestMenuButton.previousSibling as HTMLButtonElement).setAttribute('aria-expanded', 'false');
-          (closestMenuButton.previousSibling as HTMLButtonElement).focus();
-        }
-      }
-
-      // Find closest menu button or menu toggle, close menu elements accordingly.
-      if ((event.target as HTMLElement).tagName == 'A') {
-        const closestMenuLevelToggle = (event.target as HTMLAnchorElement).closest('.menu-lower-level');
-        const closestMenuButton = (event.target as HTMLAnchorElement).closest('.menu-button-ul');
-        const closestMenuToggle = (event.target as HTMLAnchorElement).closest('#main-menu');
-
-        if (closestMenuLevelToggle) {
-          (closestMenuLevelToggle.previousSibling as HTMLButtonElement).setAttribute('aria-expanded', 'false');
-          (closestMenuLevelToggle.previousSibling as HTMLButtonElement).focus();
-        } else if (closestMenuButton) {
-          (closestMenuButton.previousSibling as HTMLButtonElement).setAttribute('aria-expanded', 'false');
-          (closestMenuButton.previousSibling as HTMLButtonElement).focus();
-        } else if (closestMenuToggle) {
-          const menuToggle = document.getElementById('main-menu-toggle');
-          (menuToggle as HTMLButtonElement).setAttribute('aria-expanded', 'false');
-          (menuToggle as HTMLButtonElement).focus();
-        }
       }
 
       /**
