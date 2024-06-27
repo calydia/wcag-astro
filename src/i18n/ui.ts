@@ -7,8 +7,8 @@ export const defaultLang = 'en';
 
 export const ui = {
   en: {
-    'site-name': 'WCAG 2',
-    'site-slogan': 'a guide to the web content accessibility guidelines',
+    'site-name': 'Web Content Accessibility Guidelines',
+    'site-slogan': 'a guide to the accessibility requirements',
     'skip-link-text': 'Skip to content',
     'skip-link-search-text': 'Skip to search',
     'breadcrumb-aria': 'Breadcrumb',
@@ -39,8 +39,8 @@ export const ui = {
     'ext-a11y': 'My accessibility site'
   },
   fi: {
-    'site-name': 'WCAG 2',
-    'site-slogan': 'opas verkkosisällön saavutettavuusohjeisiin',
+    'site-name': 'Verkkosisällön saavutettavuusohjeet',
+    'site-slogan': 'opas saavutettavuuteen liittyviin vaatimuksiin',
     'skip-link-text': 'Hyppää pääsisältöön',
     'skip-link-search-text': 'Hyppää hakuun',
     'breadcrumb-aria': 'Murupolku',

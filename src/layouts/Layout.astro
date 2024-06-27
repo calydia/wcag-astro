@@ -54,9 +54,9 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
           <a href={`/${lang}`} class="inline-block border-y-4 border-transparent p-4
             hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
             focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white">
-            <span class="block text-2xl font-title text-black dark:text-white dark:text-shadow-text">Sanna Kramsi <span class="text-blue-tory dark:text-lt-perfume">-</span> {  t('site-name') }</span>
+            <span class="block text-2xl font-title text-black dark:text-white dark:text-shadow-text">{  t('site-name') }</span>
             <span class="block text-lg mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">{  t('site-slogan') }</span>
-        </a>
+          </a>
         </div>
       </div>
       <MainNavigation currentUrl={ currentUrl } locale={ locale } />
@@ -196,20 +196,15 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
     @apply mb-4 text-lg lg:text-xl font-bold mt-12 font-heading relative;
   }
 
-h1::before,
-h2::before,
-h3::before,
-h4::before {
-  content: '';
+  h1::before,
+  h2::before,
+  h3::before,
+  h4::before {
+    content: '';
 
-  @apply bg-lt-perfume dark:bg-dk-purple-header absolute block z-[-1] bottom-0 w-10 h-2.5;
-}
-
-  .demo-heading {
-    @apply mb-0;
+    @apply bg-lt-perfume dark:bg-dk-purple-header absolute block z-[-1] bottom-0 w-10 h-2.5;
   }
 
-  .demo-heading::before,
   .a11y-heading::before {
     @apply hidden invisible;  
   }
@@ -388,38 +383,6 @@ h4::before {
     @apply mt-0;
   }
 
-  /* Demo content */
-  .demo-no-focus:focus {
-    @apply hidden;
-  }
-  .pseudo-test-triangle-problem,
-  .pseudo-test-triangle-better {
-    @apply flex;
-  }
-  .pseudo-test-triangle-problem::before {
-    content: '\25BA' !important;
-    display: block !important;
-    height: 10px !important;
-    padding-right: 30px !important;
-    width: 10px !important;
-  }
-  .pseudo-test-triangle-better::before {
-    content: '\25BA' / '';
-    display: block;
-    height: 10px;
-    padding-right: 30px;
-    width: 10px;
-  }
-  .list-no-style {
-    list-style: none;
-  }
-  .list-css-fix li {
-    @apply list-none;
-  }
-  .list-css-fix li::before {
-    content: "\2022";
-  }
-
   table {
     @apply border-2 border-black dark:border-white p-2;
   }
@@ -444,10 +407,6 @@ h4::before {
     @apply border-none text-lt-blue-dark dark:text-dk-blue-light underline underline-offset-4 decoration-2;
 
     outline: none !important;
-  }
-
-  .example-section select {
-    @apply p-2 text-black border-2 border-black;
   }
 
   input[type="text"] {
@@ -509,14 +468,6 @@ h4::before {
 
   .menu-icon {
     @apply h-6 w-6 shrink-0 self-start mt-[2px];
-  }
-
-  .demo-select {
-    @apply focus:outline focus:outline-2 focus:outline-offset-4 focus:outline-black dark:focus:outline-white;
-  }
-
-  .demo-image {
-    @apply w-full h-auto max-w-[480px];
   }
 
   .nav-bar {
