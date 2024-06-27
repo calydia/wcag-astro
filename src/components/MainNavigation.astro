@@ -42,11 +42,11 @@ const principles = await fetchApi<Principle[]>({
 </nav>
 
 <script>
-  const subButtons = document.querySelectorAll('.mobile-menu-toggle');
-  subButtons.forEach((subButton) => {
-    subButton.addEventListener('click', () => {
-      const currentExpanded = subButton.getAttribute('aria-expanded');
-      (currentExpanded == 'true') ? subButton.setAttribute('aria-expanded', 'false') : subButton.setAttribute('aria-expanded', 'true');
+  const menuToggle = document.querySelectorAll('#main-menu-toggle');
+  menuToggle.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const currentExpanded = toggle.getAttribute('aria-expanded');
+      (currentExpanded == 'true') ? toggle.setAttribute('aria-expanded', 'false') : toggle.setAttribute('aria-expanded', 'true');
     });
   });
 </script>
