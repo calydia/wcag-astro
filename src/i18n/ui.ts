@@ -31,7 +31,8 @@ export const ui = {
     'more-about-this-elsewhere': 'More about this criterion elsewhere',
     'wcag-level': 'Conformance level:',
     'wcag-version': 'Criterion released in WCAG version:',
-    'ext-a11y': 'My accessibility site'
+    'ext-a11y': 'My accessibility site',
+    'sidebar-menu-title': 'WCAG Principle'
   },
   fi: {
     'site-name': 'Verkkosisällön saavutettavuusohjeet',
@@ -58,6 +59,7 @@ export const ui = {
     'more-about-this-elsewhere': 'Lisää tästä kriteeristä muualla',
     'wcag-level': 'Onnistumiskriteerin taso:',
     'wcag-version': 'Kriteeri tuli WCAG:n versiossa:',
-    'ext-a11y': 'Tutustu saavutettavuusssivustooni'
+    'ext-a11y': 'Tutustu saavutettavuusssivustooni',
+    'sidebar-menu-title': 'WCAG periaate'
   },
 } as const;
