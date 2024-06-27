@@ -23,6 +23,7 @@ export default interface Criterion {
       data: [{
         attributes: {
           slug: string
+          pageUrl: string
         }
       }]
     },
