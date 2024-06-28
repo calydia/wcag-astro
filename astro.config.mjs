@@ -5,7 +5,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://wcag.sanna.ninja',
+  site: 'https://wcag.a11y.ing',
   integrations: [sitemap({
     i18n: {
       defaultLocale: 'en',
