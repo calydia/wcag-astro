@@ -29,7 +29,11 @@ const filterdedByGuideline = criteria.filter((criterion: Criterion) => criterion
         }
         <div class="box-content">
           <p class="mb-1">{ t('wcag-level') } {criterion.attributes.criterionLevel}</p>
-          <Fragment set:html={ criterion.attributes.whatToDo } />
+          {(criterion.attributes.cardContent) ?
+            <p><Fragment set:html={ criterion.attributes.cardContent } /></p>
+            :
+            <Fragment set:html={ criterion.attributes.whatToDo } />
+          }          
         </div>
       </a>
     );

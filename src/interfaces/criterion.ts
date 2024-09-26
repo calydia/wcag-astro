@@ -10,6 +10,7 @@ export default interface Criterion {
     wcagVersion: string,
     criterionSort: number,
     whatToDo: string,
+    cardContent: string,
     whyItIsImportant: string,
     howToTestForIt: string,
     commonPitfalls: string,

@@ -26,9 +26,9 @@ module.exports = {
         'dk-code-border': '#18399a'
       },
       fontFamily: {
-        'title': ['Rock Salt', 'cursive'],
-        'sans': ['Average Sans', 'Arial', 'sans-serif'],
-        'heading': ['Average Sans'],
+        'title': ['Satisfy', 'cursive'],
+        'sans': ['Atkinson Hyperlegible', 'Arial', 'sans-serif'],
+        'heading': ['Atkinson Hyperlegible'],
         'menu': ['Lato', 'Arial', 'sans-serif'],
       },
       outlineOffset: {

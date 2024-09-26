@@ -32,7 +32,7 @@ const principles = await fetchApi<Principle[]>({
   {principles.map((principle) => {
     return (
       <li>
-        <a class="p-4 text-lg lg:mx-2" href={`/${lang}/${principle.attributes.slug}`}>
+        <a class="px-4 py-3 text-base font-menu block lg:mx-2 lg:py-2" href={`/${lang}/${principle.attributes.slug}`}>
           <span>{ principle.attributes.principleNumber }</span> {' '} { principle.attributes.name }
         </a>
       </li>
