@@ -18,7 +18,7 @@ const principles = await fetchApi<Principle[]>({
 
 <nav id="main-menu-nav" aria-labelledby="main-menu-label" class="text-black dark:text-white py-1 mt-2 nav-bar">
   <span id="main-menu-label" class="sr-only">{ t('name-main-menu') }</span>
-  <button id="main-menu-toggle" class="menu-toggle flex items-center gap-2 mt-2 mx-auto text-black border-y-4 border-transparent dark:text-white lg:hidden lg:invisible
+  <button id="main-menu-toggle" class="menu-toggle flex items-center gap-2 mt-2 py-1.5 mx-auto text-black border-y-4 border-transparent dark:text-white lg:hidden lg:invisible
   hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
   focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white"
     aria-expanded="false" aria-controls="main-menu" aria-haspopup="true">
@@ -32,7 +32,7 @@ const principles = await fetchApi<Principle[]>({
   {principles.map((principle) => {
     return (
       <li>
-        <a class="px-4 py-3 text-base font-menu block lg:mx-2 lg:py-2" href={`/${lang}/${principle.attributes.slug}`}>
+        <a class="px-4 py-3 text-base font-menu block lg:mx-2" href={`/${lang}/${principle.attributes.slug}`}>
           <span>{ principle.attributes.principleNumber }</span> {' '} { principle.attributes.name }
         </a>
       </li>
