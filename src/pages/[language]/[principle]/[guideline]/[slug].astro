@@ -81,6 +81,16 @@ const fiUrl = (page.attributes.locale == 'fi') ? page.attributes.pageUrl : page.
           <Fragment set:html={ page.attributes.howToTestForIt } />
         : null}
 
+        {(page.attributes.howToDesign) ? 
+          <h2>{ t('how-to-design-for-it') }</h2>
+          <Fragment set:html={ page.attributes.howToDesign } />
+        : null}
+
+        {(page.attributes.howToDevelop) ? 
+          <h2>{ t('how-to-develop-for-it') }</h2>
+          <Fragment set:html={ page.attributes.howToDevelop } />
+        : null}
+
         {(page.attributes.moreAboutThisCriterion) ? 
           <h2>{ t('more-about-this-elsewhere') }</h2>
           <Fragment set:html={ page.attributes.moreAboutThisCriterion } />

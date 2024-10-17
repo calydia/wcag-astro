@@ -13,6 +13,8 @@ export default interface Criterion {
     cardContent: string,
     whyItIsImportant: string,
     howToTestForIt: string,
+    howToDesign: string,
+    howToDevelop: string,
     commonPitfalls: string,
     moreAboutThisCriterion: string,
     metaDescription: string,

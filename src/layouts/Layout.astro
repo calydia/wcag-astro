@@ -126,7 +126,7 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
   }
 
   .light {
-    @apply bg-white;
+    @apply bg-lt-bg;
   }
   .dark {
     @apply bg-dk-blue-darkest;
@@ -145,7 +145,7 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
   }
 
   p {
-    @apply text-lg md:text-xl mb-8 leading-relaxed md:leading-relaxed font-light;
+    @apply text-lg md:text-xl mb-8 leading-relaxed md:leading-loose font-light;
   }
 
   .introduction p {
@@ -154,6 +154,10 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
 
   .light .sidebar-menu {
     @apply shadow-xl;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-lt-gray-heading dark:text-dk-gray-heading;
   }
 
   h1 {

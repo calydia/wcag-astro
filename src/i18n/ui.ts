@@ -27,6 +27,8 @@ export const ui = {
     'what-to-do': 'What to do?',
     'why-is-it-important': 'Why is it important?',
     'how-to-test-for-it': 'How to test for it?',
+    'how-to-develop-for-it': 'How to take this criterion into account in development?',
+    'how-to-design-for-it': 'How to take this criterion into account in design?',
     'common-pitfalls': 'Common pitfalls',
     'more-about-this-elsewhere': 'More about this criterion elsewhere',
     'wcag-level': 'Conformance level:',
@@ -55,11 +57,13 @@ export const ui = {
     'what-to-do': 'Mitä pitää tehdä?',
     'why-is-it-important': 'Miksi tämä on tärkeää?',
     'how-to-test-for-it': 'Miten testata?',
+    'how-to-develop-for-it': 'Miten huomioida tämä kriteeri kehitystyössä?',
+    'how-to-design-for-it': 'Miten huomioida tämä kriteeri suunnittelutyössä?',
     'common-pitfalls': 'Yleisiä sudenkuoppia',
     'more-about-this-elsewhere': 'Lisää tästä kriteeristä muualla',
     'wcag-level': 'Onnistumiskriteerin taso:',
     'wcag-version': 'Kriteeri tuli WCAG:n versiossa:',
     'ext-a11y': 'Tutustu saavutettavuusssivustooni',
-    'sidebar-menu-title': 'WCAG periaate'
+    'sidebar-menu-title': 'WCAG periaate',
   },
 } as const;
