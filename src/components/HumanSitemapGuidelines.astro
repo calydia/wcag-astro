@@ -2,10 +2,9 @@
 import fetchApi from '../lib/strapi';
 import type Guideline from '../interfaces/guideline';
 import HumanSitemapCriteria from './HumanSitemapCriteria.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 const guidelines = await fetchApi<Guideline[]>({
   endpoint: 'wcag-guidelines',

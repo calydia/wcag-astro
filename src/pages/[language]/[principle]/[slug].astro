@@ -5,10 +5,7 @@ import Criteria from '../../../components/Criteria.astro';
 import SidebarMenu from '../../../components/SidebarMenu.astro';
 import Breadcrumb from '../../../components/Breadcrumb.astro';
 
-import { getLangFromUrl, useTranslations } from '../../../i18n/utils';
 import type Guideline from '../../../interfaces/guideline';
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 
 export async function getStaticPaths() {
   const pages = await fetchApi<Guideline[]>({

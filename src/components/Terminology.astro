@@ -1,6 +1,6 @@
 ---
 import fetchApi from '../lib/strapi';
-import type { glossaryData, glossaryItem } from '../interfaces/terms';
+import type { glossaryData } from '../interfaces/terms';
 
 const glossaryTerms = await fetchApi<glossaryData[]>({
   endpoint: 'glossary-terms',
@@ -10,7 +10,7 @@ const glossaryTerms = await fetchApi<glossaryData[]>({
 ---
 
 <dl class="grid grid-cols-5 gap-2 gap-y-6 items-start">
-  {glossaryTerms.map((glossaryTerm: glossaryItem) => {
+  {glossaryTerms.map((glossaryTerm: any) => {
 
     if (glossaryTerm.attributes.useOnWCAGSite === true) {
       return (

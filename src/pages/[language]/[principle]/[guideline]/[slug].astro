@@ -35,7 +35,7 @@ const fiUrl = (page.attributes.locale == 'fi') ? page.attributes.pageUrl : page.
 ---
 
 <Layout type="other" metaDescription={ page.attributes.metaDescription } locale={ page.attributes.locale } title={ page.attributes.name }
-  engUrl={ engUrl } fiUrl={ fiUrl } currentUrl={ page.attributes.pageUrl } currentSlug={ page.attributes.slug }
+  engUrl={ engUrl } fiUrl={ fiUrl } currentUrl={ page.attributes.pageUrl } currentSlug={ page.attributes.slug } alternateFi={`fi/${ fiUrl }`} alternateEn={`en/${ engUrl }`}
   >
   <SidebarMenu principleNumber={ page.attributes.wcagPrinciple.data.attributes.principleNumber } principleName={ page.attributes.wcagPrinciple.data.attributes.name } />
   <div class="max-w-[1564px] mx-auto md:px-8-px">

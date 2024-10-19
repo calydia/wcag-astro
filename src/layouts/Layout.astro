@@ -16,6 +16,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
+
 ---
 <html lang={ locale }>
   <head>
@@ -47,6 +48,8 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
     <link rel="icon" href="/favicons/favicon.ico" type="image/x-icon">
     <link rel="manifest" href="/manifest.json">
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" hreflang="fi" href={`https://wcag.a11y.ing/${ alternateFi }`} />
+    <link rel="alternate" hreflang="en" href={`https://wcag.a11y.ing/${ alternateEn }`} />
   </head>
   <body class="font-sans hyphens-auto">
     <header id="page-top" class="bg-gradient-to-r from-lt-perfume via-lt-blue-light to-lt-perfume
