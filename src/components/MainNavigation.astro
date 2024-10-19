@@ -38,6 +38,13 @@ const principles = await fetchApi<Principle[]>({
       </li>
     );
   })}
+  <li>
+    {lang == 'fi' ?
+      <a href="/fi/wcag-termistoa" class="px-4 py-3 text-base font-menu block lg:mx-2">WCAG-termistöä</a>
+    :
+      <a href="/en/wcag-terminology" class="px-4 py-3 text-base font-menu block lg:mx-2">WCAG terminology</a>
+    }
+  </li>
 </ul>
 </nav>
 

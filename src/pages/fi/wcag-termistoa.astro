@@ -1,0 +1,22 @@
+---
+import fetchApi from '../../lib/strapi';
+import Layout from '../../layouts/Layout.astro'
+import type Terminology from '../../interfaces/terminology';
+import WCAGTerminology from '../../components/Terminology.astro';
+
+const terminology = await fetchApi<Terminology>({
+  endpoint: 'wcag-terminology',
+  wrappedByKey: 'data',
+  lang: 'fi'
+});
+---
+
+<Layout currentType="front" title="WCAG-termistöä" locale="fi" metaDescription="WCAG sisältää paljon termistöä, jotka eivät välttämättä ole entuudestaan kaikille tuttuja." engUrl="wcag-terminology" fiUrl="wcag-termistoa">
+  <div class="max-w-[1564px] mx-auto md:px-8-px">
+    <div class="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
+      <h1 id="skip-target">WCAG-termistöä</h1>
+      <div class="text-xl bodytext"><Fragment set:html={ terminology.attributes.content } /></div>
+      <WCAGTerminology currentLang="fi" />
+    </div>
+  </div>
+</Layout>
