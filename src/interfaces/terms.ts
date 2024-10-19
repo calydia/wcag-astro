@@ -14,6 +14,7 @@ export interface glossaryData {
 export interface glossaryItem {
   attributes: {
     termName: string,
-    termDescription: string
+    termDescription: string,
+    useOnWCAGSite?: boolean
   }
 }

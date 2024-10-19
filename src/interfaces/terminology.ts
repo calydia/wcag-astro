@@ -6,7 +6,6 @@ export default interface Terminology {
     createdAt: string,
     updatedAt: string,
     publishedAt: string,
-    locale: string,
-    useOnWCAGSite: boolean
+    locale: string
   }
 }
