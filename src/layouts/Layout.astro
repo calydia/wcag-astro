@@ -36,12 +36,15 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     { (currentType == "front" && lang == 'en')  ?
+      <meta property="og:url" content="https://wcag.a11y.ing" />
       <link rel="canonical" href="https://wcag.a11y.ing" />
     : null }
     { (currentType == "front" && lang == 'fi')  ?
-    <link rel="canonical" href="https://wcag.a11y.ing/fi/" />
+      <meta property="og:url" content="https://wcag.a11y.ing/fi/" />
+      <link rel="canonical" href="https://wcag.a11y.ing/fi/" />
     : null }
     { (currentType !== "front") ?
+      <meta property="og:url" content={`https://wcag.a11y.ing/${lang}/${currentUrl}/`} />
       <link rel="canonical" href={`https://wcag.a11y.ing/${lang}/${currentUrl}/`} />
     : null }
     <link rel="shortcut icon" href="/favicons/favicon.ico" type="image/x-icon">
