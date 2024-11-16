@@ -1,0 +1,46 @@
+---
+import fetchApi from '../lib/strapi';
+import type Guideline from '../interfaces/guideline';
+import WCAGListCriteria from './WCAGListCriteria.astro';
+import { getLangFromUrl } from '../i18n/utils';
+import { Icon } from 'astro-icon/components';
+
+const lang = getLangFromUrl(Astro.url);
+
+const guidelines = await fetchApi<Guideline[]>({
+  endpoint: 'wcag-guidelines',
+  wrappedByKey: 'data',
+  lang: lang
+});
+
+const filterdedGuidelines = guidelines.filter((guideline: Guideline) => guideline.attributes.wcagPrinciple.data.attributes.principleNumber === Astro.props.principleNumber);
+---
+
+{filterdedGuidelines.map((guideline, index: number) => {
+  return (
+    <div class="my-4">
+      <button class="accordion-toggle flex items-center p-4 border-2 border-lt-code-border bg-lt-code-bg w-full text-left drop-shadow-md text-lt-gray-heading dark:text-dk-gray-heading dark:bg-dk-code-bg dark:border-dk-code-border" aria-expanded="false" aria-controls={`button-${index}`}>
+        <span class="grow">{`${ guideline.attributes.name }`}</span>
+        <span class="" aria-hidden="true">
+          <Icon name="chevron-down" class="h-8 w-8 accordion-icon" />
+        </span>
+      </button>
+      <div id={`button-${index}`} class="accordion-content border-2 border-lt-code-border drop-shadow-md dark:border-dk-code-border border-t-0">
+        <ul class="p-4 m-0">
+          <WCAGListCriteria guidelineNumber={ guideline.attributes.guidelineNumber } lang={ lang } />
+        </ul>
+      </div>
+    </div>
+  );
+})}
+
+<script>
+  const accordionToggle = document.querySelectorAll('.accordion-toggle');
+
+  accordionToggle.forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const currentExpanded = toggle.getAttribute('aria-expanded');
+      (currentExpanded == 'true') ? toggle.setAttribute('aria-expanded', 'false') : toggle.setAttribute('aria-expanded', 'true');
+    });
+  });
+</script>

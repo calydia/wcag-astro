@@ -414,6 +414,18 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
     @apply hidden invisible;
   }
 
+  .mobile-menu-toggle[aria-expanded="false"] + ul {
+    @apply hidden invisible;
+  }
+
+  .accordion-toggle[aria-expanded="false"] + .accordion-content {
+    @apply hidden invisible;
+  }
+
+  .accordion-toggle[aria-expanded="true"] .accordion-icon {
+    @apply rotate-180;
+  }
+
   .sub-header {
     @apply lg:border-b lg:border-solid;
 

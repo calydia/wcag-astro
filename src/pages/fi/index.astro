@@ -2,6 +2,7 @@
 import fetchApi from '../../lib/strapi';
 import type FrontPage from '../../interfaces/frontpage';
 import Layout from '../../layouts/Layout.astro';
+import WCAGListPrinciples from '../../components/WCAGListPrinciples.astro';
 
 const frontPage = await fetchApi<FrontPage>({
   endpoint: 'wcag-front-page',
@@ -17,6 +18,7 @@ const frontPage = await fetchApi<FrontPage>({
     <div class="text-lt-gray dark:text-dk-gray py-2 px-4-px max-w-xl mx-auto md:py-6 md:px-8-px lg:max-w-4xl">
       <h1 id="skip-target">{ frontPage.attributes.title }</h1>
       <div class="text-xl bodytext"><Fragment set:html={ frontPage.attributes.content } /></div>
+      <WCAGListPrinciples />
     </div>
   </div>
 </Layout>
