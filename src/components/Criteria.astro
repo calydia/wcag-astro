@@ -19,7 +19,7 @@ const filterdedByGuideline = criteria.filter((criterion: Criterion) => criterion
 <div class="md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
   {filterdedByGuideline.map((criterion) => {
     return (
-      <a href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}`}
+      <a href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}/`}
         class="box-link block border-l-4 border-lt-blue-dark dark:border-dk-blue-light pl-8 hover:border-l-8 hover:border-lt-purple dark:hover:border-wheat hover:pl-7"
       >
         {(Astro.props.linkLevel == 'two') ?

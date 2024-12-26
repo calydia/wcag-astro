@@ -22,7 +22,7 @@ const principles = await fetchApi<Principle[]>({
         return (
           <li>
             <a class="py-2 block"
-              href={`/${lang}/${principle.attributes.slug}`}
+              href={`/${lang}/${principle.attributes.slug}/`}
             >
               { principle.attributes.principleNumber } { principle.attributes.name }
             </a>

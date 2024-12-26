@@ -15,7 +15,7 @@ const filterdedCriteria = criteria.filter((criterion: Criterion) => criterion.at
   return (
     <li>
       <a class="text-base block py-2.5"
-        href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}`}
+        href={`/${criterion.attributes.locale}/${criterion.attributes.wcagPrinciple.data.attributes.slug}/${criterion.attributes.wcagGuideline.data.attributes.slug}/${criterion.attributes.slug}/`}
       >
         {`${ criterion.attributes.criterionNumber } ${ criterion.attributes.name } - ${ criterion.attributes.criterionLevel }`}
       </a>
