@@ -8,8 +8,8 @@
   let ariaCurrentPageEn: 'page' | undefined = (Astro.props.englishURL === Astro.props.currentPage && lang !== 'fi') ? 'page' : undefined;
   let ariaCurrentPageFi: 'page' | undefined = (Astro.props.finnishURL === Astro.props.currentPage && lang !=='en') ? 'page' : undefined;
 
-  let finnishUrl = (Astro.props.finnishURL === 'front') ? '/fi' :  '/fi/' + Astro.props.finnishURL;
-  let englishUrl = (Astro.props.englishURL === 'front') ? '/en' : '/en/' + Astro.props.englishURL;
+  let finnishUrl = (Astro.props.finnishURL === 'front') ? '/fi/' :  '/fi/' + Astro.props.finnishURL + '/';
+  let englishUrl = (Astro.props.englishURL === 'front') ? '/en/' : '/en/' + Astro.props.englishURL + '/';
 ---
 
 <div id="language-switcher" class="lang-switcher text-black dark:text-white px-3 relative">
