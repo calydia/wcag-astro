@@ -5,6 +5,7 @@ import SkipLink from '../components/SkipLink.astro';
 import MainNavigation from '../components/MainNavigation.astro';
 import Footer from '../components/Footer.astro';
 const { title, locale, engUrl, fiUrl, currentUrl, currentSlug, metaDescription, currentType, alternateFi, alternateEn, type } = Astro.props
+import { Icon } from 'astro-icon/components';
 
 import '@fontsource/satisfy';
 import '@fontsource/atkinson-hyperlegible';
@@ -62,14 +63,17 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
         <LanguageSwitcher englishURL={ engUrl } finnishURL={ fiUrl } currentPage={ currentUrl } type={ type } />
         <ThemeToggle />
       </div>
-      <div class="text-center clear-both lg:clear:none">
+      <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-center gap-3 clear-both md:gap-8 lg:clear:none">
+        <a href={`/${lang}/`} class="inline-block border-y-4 border-transparent p-2
+          hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
+          focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white">
+          <Icon name="a11ying-dark" class="logo-dark" height="173" width="348" aria-hidden="true" />
+          <Icon name="a11ying-light" class="logo-light" height="173" width="348" aria-hidden="true" />
+          <span class="sr-only">{ t('site-front-link') }</span>
+        </a>
         <div>
-          <a href={`/${lang}/`} class="inline-block border-y-4 border-transparent p-4
-            hover:border-y-4 hover:border-lt-purple dark:hover:border-dk-blue-light
-            focus:outline focus:outline-2 focus:outline-offset-4 	focus:outline-black dark:focus:outline-white">
-            <span class="block text-3xl font-title text-black dark:text-white dark:text-shadow-text">A11ying with Sanna - {  t('site-name') }</span>
-            <span class="block text-xl mt-2 font-title leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text">{  t('site-slogan') }</span>
-          </a>
+          <span class="block text-xl font-title text-black dark:text-white dark:text-shadow-text md:text-4xl">{ t('site-name') }</span>
+          <span class="block text-xs mt-1 leading-none text-blue-tory dark:text-lt-perfume dark:text-shadow-text md:text-base">{  t('site-slogan') }</span>
         </div>
       </div>
       <MainNavigation currentUrl={ currentUrl } locale={ locale } />
@@ -142,12 +146,20 @@ const gridClass = (currentType == "front") ? 'no-grid' : 'use-grid';
     @apply hidden invisible;
   }
 
-  .light .darkmode-light {
+  .light .darkmode-light,
+  .light .logo-light {
     @apply hidden invisible;
   }
 
-  .dark .darkmode-dark{
+  .dark .darkmode-dark,
+  .dark .logo-dark {
     @apply hidden invisible;
+  }
+
+  .logo-light,
+  .logo-dark {
+    @apply h-auto w-24;
+    @apply md:w-32;
   }
 
   p {

@@ -34,7 +34,8 @@ export const ui = {
     'wcag-level': 'Conformance level:',
     'wcag-version': 'Criterion released in WCAG version:',
     'ext-a11y': 'My accessibility site',
-    'sidebar-menu-title': 'WCAG Principle'
+    'sidebar-menu-title': 'WCAG Principle',
+    'site-front-link': 'A11ying with Sanna - Web Content Accessibility Guidelines front page'
   },
   fi: {
     'site-name': 'Verkkosisällön saavutettavuusohjeet',
@@ -65,5 +66,6 @@ export const ui = {
     'wcag-version': 'Kriteeri tuli WCAG:n versiossa:',
     'ext-a11y': 'Tutustu saavutettavuusssivustooni',
     'sidebar-menu-title': 'WCAG periaate',
+    'site-front-link': 'A11ying with Sanna - Web Content Accessibility Guidelines etusivu'
   },
 } as const;
